@@ -10,15 +10,15 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-    public GameObject enterScreen;
-    public GameObject loadScreen;
+    //public GameObject enterScreen;
+    //public GameObject loadScreen;
     private StoneService stoneService;
 
     // Use this for initialization
     void Start ()
     {
         stoneService = gameObject.AddComponent<StoneService>();
-        stoneService.loadScreen = this.loadScreen;
+        //stoneService.loadScreen = this.loadScreen;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -41,7 +41,7 @@ public class MainMenuScript : MonoBehaviour
             n = name;
         }
 
-        enterScreen.SetActive(true);
+        //enterScreen.SetActive(true);
         SceneManager.LoadScene(n, LoadSceneMode.Single);
     }
 

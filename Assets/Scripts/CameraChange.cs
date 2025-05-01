@@ -6,6 +6,7 @@ public class CameraChange : MonoBehaviour
     [SerializeField]
     public Camera mainView;
     public Camera topView;
+    public Camera Puzzle;
     public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
@@ -30,7 +31,7 @@ public class CameraChange : MonoBehaviour
         FPS.SetActive(true);
         mainView.enabled = true;
         topView.enabled = false;
-        Cursor.visible = false;
+        Cursor.visible = true;
         hand.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         addStoneMenu.SetActive(false);
@@ -73,9 +74,9 @@ public class CameraChange : MonoBehaviour
                 FPS.SetActive(true);
                 mainView.enabled = true;
                 topView.enabled = false;
-                Cursor.visible = false;
+                Cursor.visible = true;
                 hand.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.None;
                 addStoneMenu.SetActive(false);
                 saveButtons.SetActive(false);
                 editStoneButtons.SetActive(false);
@@ -86,17 +87,27 @@ public class CameraChange : MonoBehaviour
             {
                 helpPane.SetActive(!helpPane.activeSelf);
             }
+
+            if (Input.GetKey("x"))
+            {
+                FPS.SetActive(false);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                mainView.enabled = false;
+                Puzzle.enabled = true;
+                hand.SetActive(true);
+            }
         }
     }
 
     void OnMouseEnter()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        //Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
     }
 
     void OnMouseExit()
     {
-        Cursor.SetCursor(null, Vector2.zero, cursorMode);
+        //Cursor.SetCursor(null, Vector2.zero, cursorMode);
     }
 
     void OnGUI()
